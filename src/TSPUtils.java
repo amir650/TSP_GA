@@ -7,7 +7,7 @@ public class TSPUtils {
 
     private final static Random R = new Random(10000);
 
-    static final TSPGene[] CITIES = generateData(100);
+    static final TSPGene[] CITIES = generateData(60);
 
     private TSPUtils() {
         throw new RuntimeException("No!");
@@ -30,8 +30,9 @@ public class TSPUtils {
         final List<T> first = new ArrayList<>();
         final List<T> second = new ArrayList<>();
         final int size = list.size();
+        final int partitionIndex = 1 + TSPUtils.randomIndex(list.size());
         IntStream.range(0, size).forEach(i -> {
-            if(i < (size+1)/2) {
+            if(i < (size+1)/partitionIndex) {
                 first.add(list.get(i));
             } else {
                 second.add(list.get(i));

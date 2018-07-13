@@ -19,11 +19,11 @@ public class TSPGene {
         return "(" + this.x + ", " + this.y+ ")";
     }
 
-    public int getX() {
+    int getX() {
         return this.x;
     }
 
-    public int getY() {
+    int getY() {
         return this.y;
     }
 

@@ -41,7 +41,7 @@ public class TSPPopulation {
     }
 
     private void doSelection() {
-        this.population.sort(Comparator.comparingDouble(TSPChromosome::calculateDistance));
+        this.population.sort(Comparator.comparingDouble(TSPChromosome::getDistance));
         this.population = this.population.stream().limit(this.initialSize).collect(Collectors.toList());
     }
 
@@ -52,7 +52,7 @@ public class TSPPopulation {
     private void doMutation() {
         final List<TSPChromosome> newPopulation = new ArrayList<>();
         for(int i = 0; i < this.population.size()/10; i++) {
-            TSPChromosome mutation = this.population.get(TSPUtils.randomIndex(this.population.size())).mutate();
+            final TSPChromosome mutation = this.population.get(TSPUtils.randomIndex(this.population.size())).mutate();
             newPopulation.add(mutation);
         }
         this.population.addAll(newPopulation);

@@ -6,9 +6,15 @@ import java.util.List;
 public class TSPChromosome {
 
     private final List<TSPGene> chromosome;
+    private final double distance;
 
-    TSPChromosome(final List<TSPGene> chromosome) {
+    public double getDistance() {
+        return this.distance;
+    }
+
+    private TSPChromosome(final List<TSPGene> chromosome) {
         this.chromosome = Collections.unmodifiableList(chromosome);
+        this.distance = calculateDistance();
     }
 
     static TSPChromosome create(final TSPGene[] points) {

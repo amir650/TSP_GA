@@ -14,7 +14,7 @@ public class World extends JPanel {
     private World() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.BLACK);
-        this.population = new TSPPopulation(TSPUtils.CITIES, 1000);
+        this.population = new TSPPopulation(TSPUtils.CITIES, 9000);
         this.generation = new AtomicInteger(0);
         final Timer timer = new Timer(5, (ActionEvent e) -> {
             this.population.update();
@@ -32,7 +32,7 @@ public class World extends JPanel {
         g.drawString("gen : " +this.generation.incrementAndGet(), 350, 15);
         g.drawString("pop size : " +this.population.getPopulation().size(), 150, 15);
         g.drawString("shortest path : "
-                +String.format("%.2f", this.population.getAlpha().calculateDistance()), 500, 15);
+                +String.format("%.2f", this.population.getAlpha().getDistance()), 500, 15);
         drawBestChromosome(g);
     }
 
